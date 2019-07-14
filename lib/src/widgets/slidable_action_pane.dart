@@ -50,17 +50,12 @@ class TestPane extends StatelessWidget {
         child: AnimatedBuilder(
           animation: data.actionsMoveAnimation,
           builder: (context, child) {
-            return FractionallySizedBox(
-              alignment: data.alignment,
-              widthFactor: data.directionIsXAxis ? animation.value : null,
-              heightFactor: data.directionIsXAxis ? null : animation.value,
-              child: Stack(
-                // direction: data.direction,
-                children: data
-                    .buildActions(context)
-                    .map((a) => Expanded(child: a))
-                    .toList(),
-              ),
+            return Stack(
+              // direction: data.direction,
+              children: data
+                  .buildActions(context)
+                  .map((a) => Expanded(child: a))
+                  .toList(),
             );
           },
         ),
