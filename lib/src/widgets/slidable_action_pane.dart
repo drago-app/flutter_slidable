@@ -44,20 +44,19 @@ class TestPane extends StatelessWidget {
       end: data.totalActionsExtent,
     ).animate(data.actionsMoveAnimation);
 
-    return _SlidableStackActionPane(
-      data: data,
-      child: Positioned.fill(
-        child: AnimatedBuilder(
-          animation: data.actionsMoveAnimation,
-          builder: (context, child) {
-            return Stack(
-              // direction: data.direction,
-              children: data.buildActions(context).map((a) => a).toList(),
-            );
-          },
-        ),
-      ),
-    );
+    return _SlidableStackActionPane(data: data, child: Text('asd')
+        // child: Positioned.fill(
+        //   child: AnimatedBuilder(
+        //     animation: data.actionsMoveAnimation,
+        //     builder: (context, child) {
+        //       return Stack(
+        //         // direction: data.direction,
+        //         children: data.buildActions(context).map((a) => a).toList(),
+        //       );
+        //     },
+        //   ),
+        // ),
+        );
   }
 }
 
