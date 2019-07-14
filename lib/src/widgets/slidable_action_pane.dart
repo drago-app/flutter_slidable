@@ -34,6 +34,41 @@ class _SlidableStackActionPane extends StatelessWidget {
   }
 }
 
+class TestPane extends StatelessWidget {
+  const TestPane({Key key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    final SlidableData data = SlidableData.of(context);
+    final animation = Tween<double>(
+      begin: 0.0,
+      end: data.totalActionsExtent,
+    ).animate(data.actionsMoveAnimation);
+
+    return _SlidableStackActionPane(
+      data: data,
+      child: Positioned.fill(
+        child: AnimatedBuilder(
+          animation: data.actionsMoveAnimation,
+          builder: (context, child) {
+            return FractionallySizedBox(
+              alignment: data.alignment,
+              widthFactor: data.directionIsXAxis ? animation.value : null,
+              heightFactor: data.directionIsXAxis ? null : animation.value,
+              child: Flex(
+                direction: data.direction,
+                children: data
+                    .buildActions(context)
+                    .map((a) => Expanded(child: a))
+                    .toList(),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
 /// An action pane that creates actions which stretch while the item is sliding.
 class SlidableStrechActionPane extends StatelessWidget {
   const SlidableStrechActionPane({Key key}) : super(key: key);
