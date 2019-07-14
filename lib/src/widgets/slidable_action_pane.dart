@@ -52,10 +52,7 @@ class TestPane extends StatelessWidget {
           builder: (context, child) {
             return Stack(
               // direction: data.direction,
-              children: data
-                  .buildActions(context)
-                  .map((a) => Expanded(child: a))
-                  .toList(),
+              children: data.buildActions(context).map((a) => a).toList(),
             );
           },
         ),
