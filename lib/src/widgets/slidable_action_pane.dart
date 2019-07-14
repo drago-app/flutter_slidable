@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_slidable/src/widgets/slidable.dart';
 
@@ -44,6 +45,11 @@ class TestPane extends StatelessWidget {
       end: data.totalActionsExtent,
     ).animate(data.actionsMoveAnimation);
 
+    final List<Widget> _actions = [
+      Container(
+          color: Colors.red, width: animation.value, height: animation.value)
+    ];
+
     return _SlidableStackActionPane(
       data: data,
       child: Positioned.fill(
@@ -51,7 +57,7 @@ class TestPane extends StatelessWidget {
           animation: data.actionsMoveAnimation,
           builder: (context, child) {
             return Stack(
-              children: <Widget>[Text('1111111'), Text('22222223')],
+              children: _actions,
             );
             // return Stack(
             //   // direction: data.direction,
