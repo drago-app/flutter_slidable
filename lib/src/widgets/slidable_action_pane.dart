@@ -54,8 +54,8 @@ class TestPane extends StatelessWidget {
               alignment: data.alignment,
               widthFactor: data.directionIsXAxis ? animation.value : null,
               heightFactor: data.directionIsXAxis ? null : animation.value,
-              child: Flex(
-                direction: data.direction,
+              child: Stack(
+                // direction: data.direction,
                 children: data
                     .buildActions(context)
                     .map((a) => Expanded(child: a))
